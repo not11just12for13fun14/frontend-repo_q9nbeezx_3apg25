@@ -24,8 +24,11 @@ export default function App() {
   const [searchResults, setSearchResults] = useState(null)
   const [activeCategory, setActiveCategory] = useState(null)
 
+  // Maroon ↔ Tan page background hues
   const palette = useMemo(() => ({
-    bg: dark ? 'bg-gradient-to-b from-[#070B14] via-[#0B1324] to-black' : 'bg-gradient-to-b from-[#F4F1FA] via-[#F0FFF9] to-[#FFF9F2]',
+    bg: dark
+      ? 'bg-gradient-to-b from-[#2a0f10] via-[#40191a] to-[#0a0a0a]'
+      : 'bg-gradient-to-b from-[#fff7ed] via-[#f6eadb] to-[#d2b48c]/30',
   }), [dark])
 
   const categories = [
@@ -133,29 +136,29 @@ export default function App() {
 
         {/* Sidebar */}
         <aside className="space-y-4">
-          <section className="p-4 rounded-2xl bg-white/70 dark:bg-slate-900/50 border border-black/5 dark:border-white/10">
-            <h3 className="font-semibold text-slate-900 dark:text-white mb-2">What It Is</h3>
-            <p className="text-sm text-slate-700 dark:text-slate-300">The Hustle Network lets people exchange or learn skills without money using a simple daily credit system.</p>
+          <section className="p-4 rounded-2xl bg-[#fff7ed]/80 dark:bg-[#1b0f0f]/70 border border-[#7f1d1d]/10 dark:border-[#d2b48c]/10">
+            <h3 className="font-semibold text-[#3a1a1a] dark:text-[#fbe9d2] mb-2">What It Is</h3>
+            <p className="text-sm text-[#593333] dark:text-[#efd9c2]">The Hustle Network lets people exchange or learn skills without money using a simple daily credit system.</p>
           </section>
-          <section className="p-4 rounded-2xl bg-white/70 dark:bg-slate-900/50 border border-black/5 dark:border-white/10">
-            <h3 className="font-semibold text-slate-900 dark:text-white mb-2">How It Works</h3>
-            <ul className="text-sm text-slate-700 dark:text-slate-300 list-disc ml-5 space-y-1">
+          <section className="p-4 rounded-2xl bg-[#fff7ed]/80 dark:bg-[#1b0f0f]/70 border border-[#7f1d1d]/10 dark:border-[#d2b48c]/10">
+            <h3 className="font-semibold text-[#3a1a1a] dark:text-[#fbe9d2] mb-2">How It Works</h3>
+            <ul className="text-sm text-[#593333] dark:text-[#efd9c2] list-disc ml-5 space-y-1">
               <li>Daily credits to learn or exchange skills</li>
               <li>Exchange costs fewer credits</li>
               <li>Vendors can set one-time or subscription pricing</li>
             </ul>
           </section>
-          <section className="p-4 rounded-2xl bg-white/70 dark:bg-slate-900/50 border border-black/5 dark:border-white/10">
-            <h3 className="font-semibold text-slate-900 dark:text-white mb-3">Categories</h3>
-            <ul className="text-sm text-slate-700 dark:text-slate-300 space-y-1">
+          <section className="p-4 rounded-2xl bg-[#fff7ed]/80 dark:bg-[#1b0f0f]/70 border border-[#7f1d1d]/10 dark:border-[#d2b48c]/10">
+            <h3 className="font-semibold text-[#3a1a1a] dark:text-[#fbe9d2] mb-3">Categories</h3>
+            <ul className="text-sm text-[#593333] dark:text-[#efd9c2] space-y-1">
               {categories.map((c) => (
                 <li key={c.id}>
                   <button
                     onClick={() => setActiveCategory(c)}
-                    className="w-full text-left px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition flex items-center justify-between"
+                    className="w-full text-left px-3 py-2 rounded-lg hover:bg-[#fae8d7] dark:hover:bg-[#2a1515] transition flex items-center justify-between border border-transparent hover:border-[#7f1d1d]/20 dark:hover:border-[#d2b48c]/20"
                   >
                     <span>{c.name} (~{c.credits} credits)</span>
-                    <span className="text-xs text-slate-500">View</span>
+                    <span className="text-xs text-[#7f1d1d] dark:text-[#d2b48c]">View</span>
                   </button>
                 </li>
               ))}
@@ -167,14 +170,14 @@ export default function App() {
           )}
 
           {searchResults && (
-            <section className="p-4 rounded-2xl bg-white/70 dark:bg-slate-900/50 border border-black/5 dark:border-white/10">
-              <h3 className="font-semibold text-slate-900 dark:text-white mb-2">Search Results</h3>
+            <section className="p-4 rounded-2xl bg-[#fff7ed]/80 dark:bg-[#1b0f0f]/70 border border-[#7f1d1d]/10 dark:border-[#d2b48c]/10">
+              <h3 className="font-semibold text-[#3a1a1a] dark:text-[#fbe9d2] mb-2">Search Results</h3>
               <ul className="space-y-2">
                 {searchResults.map((r, i) => (
-                  <li key={i} className="text-sm text-slate-700 dark:text-slate-300">
-                    <span className="px-2 py-0.5 text-xs rounded-full bg-slate-100 dark:bg-slate-800 mr-2">{r.type}</span>
+                  <li key={i} className="text-sm text-[#593333] dark:text-[#efd9c2]">
+                    <span className="px-2 py-0.5 text-xs rounded-full bg-[#fae8d7] dark:bg-[#2a1515] mr-2">{r.type}</span>
                     {r.title}
-                    {r.subtitle && <span className="text-slate-500 ml-2">{r.subtitle}</span>}
+                    {r.subtitle && <span className="text-[#7f1d1d]/70 dark:text-[#d2b48c]/80 ml-2">{r.subtitle}</span>}
                   </li>
                 ))}
               </ul>
